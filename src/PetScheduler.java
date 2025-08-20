@@ -1,7 +1,6 @@
 package src;
 
 import java.util.Scanner;
-import java.util.Set;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,7 +24,6 @@ import java.util.UUID;
 
 public class PetScheduler {
     private static final String PET_DATA_FILENAME = "pets.ser";
-    private static final Set<String> APPOINTMENT_TYPES = Set.of("vet visit", "vaccination", "grooming");
     private static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm";
     private static Scanner scanner = new Scanner(System.in);
     private static Map<String, Pet> pets = new HashMap<>();
@@ -122,10 +120,14 @@ public class PetScheduler {
         }
 
         System.out.print("Enter appointment type: ");
-        String appointmentType = scanner.nextLine().trim().toLowerCase();
+        String appointmentTypeInput = scanner.nextLine().trim().toLowerCase();
 
-        if (!APPOINTMENT_TYPES.contains(appointmentType)) {
-            System.out.println("Error: Appoint type now supported: " + appointmentType);
+        AppointmentType appointmentType = null;
+
+        try {
+            appointmentType = AppointmentType.fromString(appointmentTypeInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return;
         }
 
@@ -133,11 +135,11 @@ public class PetScheduler {
         LocalDateTime datetime;
 
         try {
-            System.out.print("Enter date in the format (yyyy-MM-dd HH:mm): ");
+            System.out.printf("Enter date in the format (%s): ", DATETIME_FORMAT);
             String datetimeInput = scanner.nextLine().trim();
             datetime = LocalDateTime.parse(datetimeInput, DateTimeFormatter.ofPattern(DATETIME_FORMAT));
         } catch (DateTimeParseException e) {
-            System.out.println("Invalid date format:  Use yyyy-MM-dd HH:mm");
+            System.out.println("Invalid date format:  Use " + DATETIME_FORMAT);
             return;
         }
 
