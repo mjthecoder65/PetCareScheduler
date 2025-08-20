@@ -94,24 +94,6 @@ Pet is successfully registered, date: 2025-08-20
 
 ---
 
-## Project Structure
-
-```
-PetScheduler/
-├── classes/src/            # Compiled Java classes
-├── src/                    # Java source files
-│   ├── Appointment.java
-│   ├── Pet.java
-│   └── PetScheduler.java
-├── pets.ser                # Serialized data file
-├── tests/                  # Unit tests (optional)
-├── commands.sh             # Optional build/run commands
-├── Makefile                # Optional build automation
-└── README.md
-```
-
----
-
 ## Future Enhancements
 
 - Add functionality to **edit or delete** pets and appointments.
