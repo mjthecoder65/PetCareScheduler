@@ -59,15 +59,7 @@ java -cp classes/src src.PetScheduler
 ## Usage
 
 1. Run the program to see the main menu.
-2. Choose an option (1-8) from the menu.
-3. Follow the prompts to:
-
-   - Register a new pet.
-   - Schedule an appointment.
-   - View pets or appointments.
-   - Generate reports.
-
-4. Save and exit to persist data.
+2. Choose an option (1-8) from the menu to perform the action you want.
 
 **Example Interaction:**
 
