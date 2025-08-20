@@ -16,6 +16,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Main console menu for PetScheduler app.
@@ -81,13 +82,6 @@ public class PetScheduler {
     }
 
     public static void registerPet() {
-        System.out.print("Enter pet ID: ");
-        String id = scanner.nextLine().trim();
-
-        if (pets.containsKey(id)) {
-            System.out.println("Error: Pet ID already exist");
-            return;
-        }
 
         System.out.print("Enter Pet Name: ");
         String name = scanner.nextLine().trim();
@@ -111,6 +105,7 @@ public class PetScheduler {
         System.out.print("Enter Pet Owner Contact Info: ");
         String contactInfo = scanner.nextLine().trim();
 
+        String id = UUID.randomUUID().toString();
         Pet pet = new Pet(id, name, breed, age, ownerName, contactInfo);
         pets.put(id, pet);
         System.out.println("Pet is successfully registered, date: " + pet.getRegistrationDate());
