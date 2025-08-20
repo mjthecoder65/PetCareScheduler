@@ -75,7 +75,6 @@ java -cp classes/src src.PetScheduler
   8. Save and Exit
 ==========================================
 Choose an option: 1
-Enter pet ID: P001
 Enter Pet Name: Fluffy
 Enter Pet Breed: Persian
 Enter Pet's Age: 3
