@@ -39,7 +39,7 @@ PetCareScheduler is a Java console application designed to help pet owners and v
 
 ```bash
 git clone https://github.com/mjthecoder65/PetCareScheduler.git
-cd PetScheduler
+cd PetCareScheduler
 ```
 
 2. **Compile the source code**
