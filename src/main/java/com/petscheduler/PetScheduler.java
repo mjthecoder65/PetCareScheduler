@@ -1,4 +1,4 @@
-package src;
+package com.petscheduler;
 
 import java.util.Scanner;
 import java.io.FileInputStream;

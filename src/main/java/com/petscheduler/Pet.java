@@ -1,4 +1,4 @@
-package src;
+package com.petscheduler;
 
 import java.io.Serializable;
 import java.time.LocalDate;
