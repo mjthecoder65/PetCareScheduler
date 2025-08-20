@@ -9,22 +9,22 @@ import java.time.format.DateTimeFormatter;
  * Stores type, date/time, and optional notes.
  */
 public class Appointment implements Serializable {
-    private String type;
+    private AppointmentType type;
     private LocalDateTime datetime;
     private String notes = null;
 
-    public Appointment(String type, LocalDateTime datetime) {
+    public Appointment(AppointmentType type, LocalDateTime datetime) {
         this.type = type;
         this.datetime = datetime;
     }
 
-    public Appointment(String type, LocalDateTime datetime, String notes) {
+    public Appointment(AppointmentType type, LocalDateTime datetime, String notes) {
         this.type = type;
         this.datetime = datetime;
         this.notes = notes;
     }
 
-    public String getAppointmentType() {
+    public AppointmentType getAppointmentType() {
         return type;
     }
 
@@ -36,7 +36,7 @@ public class Appointment implements Serializable {
         return notes;
     }
 
-    public void setAppointmentType(String type) {
+    public void setAppointmentType(AppointmentType type) {
         this.type = type;
     }
 
