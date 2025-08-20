@@ -17,6 +17,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Main console menu for PetScheduler app.
+ * Handles user interaction and calls PetService methods.
+ */
+
 public class PetScheduler {
     private static final String PET_DATA_FILENAME = "pets.ser";
     private static final Set<String> APPOINTMENT_TYPES = Set.of("vet visit", "vaccination", "grooming");
