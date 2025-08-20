@@ -33,7 +33,7 @@ public class PetScheduler {
         loadPetsDataFromFile();
         boolean running = true;
         while (running) {
-            System.out.println("\n============= PetCare Scheduller =============");
+            System.out.println("\n============= PetCare Scheduller Menu =============");
             System.out.println("  1. Register a Pet");
             System.out.println("  2. Schedule an Appointment");
             System.out.println("  3. View All Pets");
