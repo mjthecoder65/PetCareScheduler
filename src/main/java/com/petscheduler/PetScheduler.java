@@ -43,6 +43,7 @@ public class PetScheduler {
             System.out.println("  8. Save and Exit");
             System.out.println("==========================================");
             System.out.print("Choose an option: ");
+
             String choice = scanner.nextLine().trim();
 
             switch (choice) {
@@ -58,6 +59,7 @@ public class PetScheduler {
                     running = false;
                 }
                 default -> System.out.println("Unsuported choice. Please choose 1 and 8");
+
             }
 
         }
@@ -286,7 +288,7 @@ public class PetScheduler {
                 }
             }
         }
-
+        
         System.out.println("****************** Pets with Overdue Vet Visit **************");
         for (Pet pet : pets.values()) {
             var appointments = pet.getAppointments();
