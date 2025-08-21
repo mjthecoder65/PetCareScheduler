@@ -1,6 +1,5 @@
 package com.petscheduler;
 
-import java.util.Scanner;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,6 +14,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.UUID;
 
 /**
@@ -25,7 +25,7 @@ import java.util.UUID;
 public class PetScheduler {
     private static final String PET_DATA_FILENAME = "pets.ser";
     private static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm";
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     private static Map<String, Pet> pets = new HashMap<>();
 
     public static void main(String[] args) {
@@ -43,37 +43,22 @@ public class PetScheduler {
             System.out.println("  8. Save and Exit");
             System.out.println("==========================================");
             System.out.print("Choose an option: ");
+
             String choice = scanner.nextLine().trim();
 
             switch (choice) {
-                case "1":
-                    registerPet();
-                    break;
-                case "2":
-                    scheduleAppointment();
-                    break;
-                case "3":
-                    displayPets();
-                    break;
-                case "4":
-                    displayPetAppointments();
-                    break;
-                case "5":
-                    displayPetsUpcomingAppointments();
-                    break;
-                case "6":
-                    displayPetPastAppointments();
-                    break;
-                case "7":
-                    generateReport();
-                    break;
-                case "8":
+                case "1" -> registerPet();
+                case "2" -> scheduleAppointment();
+                case "3" -> displayPets();
+                case "4" -> displayPetAppointments();
+                case "5" -> displayPetsUpcomingAppointments();
+                case "6" -> displayPetPastAppointments();
+                case "7" -> generateReport();
+                case "8" -> {
                     savePetsDataToFile();
                     running = false;
-                    break;
-                default:
-                    System.out.println("Unsuported choice. Please choose 1 and 8");
-                    break;
+                }
+                default ->  System.out.println("Unsuported choice. Please choose 1 and 8");
             }
 
         }
@@ -122,7 +107,7 @@ public class PetScheduler {
         System.out.print("Enter appointment type: ");
         String appointmentTypeInput = scanner.nextLine().trim().toLowerCase();
 
-        AppointmentType appointmentType = null;
+        AppointmentType appointmentType;
 
         try {
             appointmentType = AppointmentType.fromString(appointmentTypeInput);
@@ -221,7 +206,7 @@ public class PetScheduler {
         List<Appointment> appointments = pet.getAppointments();
         appointments.sort(Comparator.comparing(Appointment::getDateTime));
 
-        if (appointments.size() == 0) {
+        if (appointments.isEmpty()) {
             System.out.println("Has not appoints");
         }
 
@@ -258,7 +243,7 @@ public class PetScheduler {
         }
 
         var appointments = pet.getAppointments();
-        if (appointments.size() == 0) {
+        if (appointments.isEmpty()) {
             System.out.println("Pet with ID " + pet.getId() + " has not scheduled appointments");
             return;
         }
@@ -302,7 +287,7 @@ public class PetScheduler {
                 }
             }
         }
-
+        
         System.out.println("****************** Pets with Overdue Vet Visit **************");
         for (Pet pet : pets.values()) {
             var appointments = pet.getAppointments();
