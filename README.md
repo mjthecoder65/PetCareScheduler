@@ -1,5 +1,7 @@
 # PetCareScheduler - Pet Management & Appointment Scheduling Console App
 
+![Java CI](https://github.com/mjthecoder65/PetCareScheduler/actions/workflows/maven.yml/badge.svg)
+
 ## Overview
 
 PetCareScheduler is a Java console application designed to help pet owners and veterinarians manage pets and their appointments. It allows you to register pets, schedule appointments (vet visits, vaccinations, grooming), and generate useful reports for upcoming and overdue appointments.
@@ -33,6 +35,18 @@ PetCareScheduler is a Java console application designed to help pet owners and v
 
 ---
 
+---
+
+## Technologies
+
+- **Programming Language:** Java 17
+- **Build Tool:** Maven
+- **Testing Framework:** JUnit 5
+- **IDE/Editor:** VSCode (with Java Extension Pack)
+- **Version Control:** Git
+
+---
+
 ## Installation
 
 1. **Clone the repository**
@@ -45,13 +59,19 @@ cd PetCareScheduler
 2. **Compile the source code**
 
 ```bash
-javac -d classes/src src/*.java
+mvn compile
 ```
 
-3. **Run the application**
+3. **Run Tests**
 
 ```bash
-java -cp classes/src src.PetScheduler
+mvn clean test
+```
+
+4. **Run the application**
+
+```bash
+mvn exec:java
 ```
 
 ---
