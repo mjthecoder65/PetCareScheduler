@@ -10,14 +10,14 @@ import java.util.List;
  * Stores owner info and allows scheduling appointments.
  */
 public class Pet implements Serializable {
-    private String id;
-    private String name;
-    private String breed;
-    private int age;
-    private String ownerName;
-    private String contactInfo;
-    private LocalDate registrationDate;
-    private List<Appointment> appointments = new ArrayList<>();
+    private final String id;
+    private final String name;
+    private final String breed;
+    private final int age;
+    private final String ownerName;
+    private final String contactInfo;
+    private final LocalDate registrationDate;
+    private final List<Appointment> appointments = new ArrayList<>();
 
     public Pet(String id, String name, String breed, int age, String ownerName,
             String contactInfo) {
