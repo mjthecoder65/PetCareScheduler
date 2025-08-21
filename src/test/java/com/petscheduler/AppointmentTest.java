@@ -47,11 +47,11 @@ class AppointmentTest {
         appointment.setNotes("Fasting required");
         assertEquals("Fasting required", appointment.getNotes());
 
-        appointment.setAppointmentType(AppointmentType.VACCINATION);
-        assertEquals(AppointmentType.VACCINATION, appointment.getAppointmentType());
+        appointment.setType(AppointmentType.VACCINATION);
+        assertEquals(AppointmentType.VACCINATION, appointment.getType());
 
         LocalDateTime newTime = LocalDateTime.of(2025, 8, 22, 16, 0);
-        appointment.setDateTime(newTime);
-        assertEquals(newTime, appointment.getDateTime());
+        appointment.setDatetime(newTime);
+        assertEquals(newTime, appointment.getDatetime());
     }
 }

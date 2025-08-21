@@ -26,6 +26,6 @@ public class PetTest {
         pet.addAppointment(appointment);
         assertEquals(1, pet.getAppointments().size());
         assertEquals(appointment, pet.getAppointments().get(0));
-        assertEquals(AppointmentType.VET_VISIT, appointment.getAppointmentType());
+        assertEquals(AppointmentType.VET_VISIT, appointment.getType());
     }
 }

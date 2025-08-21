@@ -152,7 +152,7 @@ public class PetScheduler {
 
         pet.addAppointment(appointment);
         System.out
-                .println("Scheduled an appointment for the pet " + pet.getName() + " On " + appointment.getDateTime());
+                .println("Scheduled an appointment for the pet " + pet.getName() + " On " + appointment.getDatetime());
     }
 
     public static void savePetsDataToFile() {
@@ -205,7 +205,7 @@ public class PetScheduler {
         }
 
         List<Appointment> appointments = pet.getAppointments();
-        appointments.sort(Comparator.comparing(Appointment::getDateTime));
+        appointments.sort(Comparator.comparing(Appointment::getDatetime));
 
         if (appointments.isEmpty()) {
             System.out.println("Has not appoints");
@@ -226,7 +226,7 @@ public class PetScheduler {
         for (Pet pet : pets.values()) {
             System.out.println("______Upcoming Appointments for Pet: " + pet.getName() + "______");
             for (var appointment : pet.getAppointments()) {
-                if (appointment.getDateTime().isAfter(today)) {
+                if (appointment.getDatetime().isAfter(today)) {
                     System.out.println(appointment);
                 }
             }
@@ -252,7 +252,7 @@ public class PetScheduler {
         LocalDateTime today = LocalDateTime.now();
         System.out.println("______Past Appointments for Pet " + pet.getId() + "_______");
         for (Appointment appointment : appointments) {
-            if (appointment.getDateTime().isBefore(today)) {
+            if (appointment.getDatetime().isBefore(today)) {
                 System.out.println(appointment);
             }
         }
@@ -279,10 +279,10 @@ public class PetScheduler {
 
         for (Pet pet : pets.values()) {
             for (Appointment appointment : pet.getAppointments()) {
-                if (appointment.getDateTime().isBefore(today)) {
+                if (appointment.getDatetime().isBefore(today)) {
                     continue;
                 }
-                if (isNextWeek(appointment.getDateTime())) {
+                if (isNextWeek(appointment.getDatetime())) {
                     System.out.println(pet);
                     break;
                 }
@@ -298,7 +298,7 @@ public class PetScheduler {
             var lastAppointment = appointments.get(n - 1);
             var lastSixMonth = LocalDateTime.now().minusMonths(6);
 
-            if (lastAppointment.getDateTime().isBefore(lastSixMonth)) {
+            if (lastAppointment.getDatetime().isBefore(lastSixMonth)) {
                 System.out.println(pet);
             }
         }
