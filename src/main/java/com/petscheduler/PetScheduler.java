@@ -58,7 +58,8 @@ public class PetScheduler {
                     savePetsDataToFile();
                     running = false;
                 }
-                default ->  System.out.println("Unsuported choice. Please choose 1 and 8");
+                default -> System.out.println("Unsuported choice. Please choose 1 and 8");
+
             }
 
         }
