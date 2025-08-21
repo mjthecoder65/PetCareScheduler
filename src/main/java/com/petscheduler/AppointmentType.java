@@ -15,7 +15,7 @@ public enum AppointmentType {
             default -> super.toString();
         };
     }
-
+    
     public static AppointmentType fromString(String type) {
         return switch (type) {
             case "vet visit" -> VET_VISIT; 

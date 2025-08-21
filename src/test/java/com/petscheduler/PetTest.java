@@ -6,7 +6,9 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
+
 public class PetTest {
+
     @Test
     public void testAddAppointment() {
         Pet pet = new Pet(
@@ -24,5 +26,6 @@ public class PetTest {
         pet.addAppointment(appointment);
         assertEquals(1, pet.getAppointments().size());
         assertEquals(appointment, pet.getAppointments().get(0));
+        assertEquals(AppointmentType.VET_VISIT, appointment.getAppointmentType());
     }
 }
