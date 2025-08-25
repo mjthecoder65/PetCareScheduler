@@ -27,3 +27,4 @@ Thumbs.db
 # Others
 commands.sh
 *.ser
+.env
