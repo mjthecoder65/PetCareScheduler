@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:15.10 
+    restart: always
+    container_name: new_investor_db
+    env_file: .env
+    ports:
+      - "5030:5432"
+    volumes:
+      - petcare_scheduler_db:/var/lib/postgresql/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"
+volumes:
+  petcare_scheduler_db:
