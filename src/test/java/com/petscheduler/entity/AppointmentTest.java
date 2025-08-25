@@ -1,4 +1,4 @@
-package com.petscheduler;
+package com.petscheduler.entity;
 
 import java.time.LocalDateTime;
 

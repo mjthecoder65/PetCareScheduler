@@ -1,4 +1,4 @@
-package com.petscheduler;
+package com.petscheduler.service;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -17,55 +17,24 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.UUID;
 
-/**
- * Main console menu for PetScheduler app.
- * Handles user interaction and calls PetService methods.
- */
+import com.petscheduler.entity.Appointment;
+import com.petscheduler.entity.AppointmentType;
+import com.petscheduler.entity.Pet;
 
-public class PetScheduler {
+
+public class PetSchedulerService {
     private static final String PET_DATA_FILENAME = "pets.ser";
     private static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm";
-    private static final Scanner scanner = new Scanner(System.in);
-    private static Map<String, Pet> pets = new HashMap<>();
+    private final Scanner scanner;
+    private static Map<String, Pet> pets;
 
-    public static void main(String[] args) {
-        loadPetsDataFromFile();
-        boolean running = true;
-        while (running) {
-            System.out.println("\n============= PetCare Scheduller Menu =============");
-            System.out.println("  1. Register a Pet");
-            System.out.println("  2. Schedule an Appointment");
-            System.out.println("  3. View All Pets");
-            System.out.println("  4. View All Appointments For a Pet");
-            System.out.println("  5. View Upcoming Appointments");
-            System.out.println("  6. View Past Appointment History For a Pet");
-            System.out.println("  7. Generate Report");
-            System.out.println("  8. Save and Exit");
-            System.out.println("==========================================");
-            System.out.print("Choose an option: ");
 
-            String choice = scanner.nextLine().trim();
-
-            switch (choice) {
-                case "1" -> registerPet();
-                case "2" -> scheduleAppointment();
-                case "3" -> displayPets();
-                case "4" -> displayPetAppointments();
-                case "5" -> displayPetsUpcomingAppointments();
-                case "6" -> displayPetPastAppointments();
-                case "7" -> generateReport();
-                case "8" -> {
-                    savePetsDataToFile();
-                    running = false;
-                }
-                default -> System.out.println("Unsuported choice. Please choose 1 and 8");
-
-            }
-
-        }
+    public PetSchedulerService() {
+        pets = new HashMap<>();
+        this.scanner = new Scanner(System.in);
     }
 
-    public static void registerPet() {
+    public void registerPet() {
 
         System.out.print("Enter Pet Name: ");
         String name = scanner.nextLine().trim();
@@ -95,7 +64,7 @@ public class PetScheduler {
         System.out.println("Pet is successfully registered, date: " + pet.getRegistrationDate());
     }
 
-    public static void scheduleAppointment() {
+    public void scheduleAppointment() {
         System.out.print("Enter Pet ID: ");
         String id = scanner.nextLine().trim();
         Pet pet = pets.get(id);
@@ -155,7 +124,7 @@ public class PetScheduler {
                 .println("Scheduled an appointment for the pet " + pet.getName() + " On " + appointment.getDatetime());
     }
 
-    public static void savePetsDataToFile() {
+    public void savePetsDataToFile() {
         if (!pets.isEmpty()) {
             try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(PET_DATA_FILENAME))) {
                 out.writeObject(pets);
@@ -170,7 +139,7 @@ public class PetScheduler {
     }
 
     @SuppressWarnings("unchecked")
-    public static void loadPetsDataFromFile() {
+    public void loadPetsDataFromFile() {
         try (var in = new ObjectInputStream(new FileInputStream(PET_DATA_FILENAME))) {
             pets = (Map<String, Pet>) in.readObject();
             if (!pets.isEmpty())
@@ -182,7 +151,7 @@ public class PetScheduler {
         }
     }
 
-    public static void displayPets() {
+    public void displayPets() {
         if (pets.isEmpty()) {
             System.out.println("There are not pets registered");
             return;
@@ -194,7 +163,7 @@ public class PetScheduler {
         }
     }
 
-    public static void displayPetAppointments() {
+    public void displayPetAppointments() {
         System.out.print("Enter Pet ID: ");
         String id = scanner.nextLine().trim();
 
@@ -216,7 +185,7 @@ public class PetScheduler {
         }
     }
 
-    public static void displayPetsUpcomingAppointments() {
+    public void displayPetsUpcomingAppointments() {
         if (pets.isEmpty()) {
             System.out.println("No registered pets.");
             return;
@@ -233,7 +202,7 @@ public class PetScheduler {
         }
     }
 
-    public static void displayPetPastAppointments() {
+    public void displayPetPastAppointments() {
         System.out.print("Enter Pet ID: ");
         String id = scanner.nextLine().trim();
         Pet pet = pets.get(id);
@@ -258,7 +227,7 @@ public class PetScheduler {
         }
     }
 
-    private static boolean isNextWeek(LocalDateTime datetime) {
+    private boolean isNextWeek(LocalDateTime datetime) {
         LocalDateTime today = LocalDateTime.now();
 
         LocalDateTime startOfNextWeek = today.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
@@ -268,7 +237,7 @@ public class PetScheduler {
                 && datetime.isBefore(endOfNextWeek);
     }
 
-    private static void generateReport() {
+    public void generateReport() {
         if (pets.isEmpty()) {
             System.out.println("There are not pets registered");
             return;

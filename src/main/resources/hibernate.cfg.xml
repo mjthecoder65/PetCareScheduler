@@ -1,0 +1,22 @@
+<hibernate-configuration>
+    <session-factory>
+        <!-- PostgreSQL Connection -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5030/main</property>
+        <property name="hibernate.connection.username">admin</property>
+        <property name="hibernate.connection.password">y7jHf&amp;DNWG15</property>
+
+        <!-- PostgreSQL Dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+        <!-- Schema auto update -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Show SQL -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Mapping entity class -->
+        <mapping class="com.playground.entity.User"/>
+    </session-factory>
+</hibernate-configuration>
